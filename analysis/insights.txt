@@ -1,0 +1,9 @@
+Data Science Web Scraping Insights
+==============================
+Total jobs analyzed: 328
+Average numeric salary (USD-like normalized): 577954.11
+
+Top 5 demanded skills:
+
+Top 3 locations for Software Engineer roles:
+- None found for 'Software Engineer' role titles
