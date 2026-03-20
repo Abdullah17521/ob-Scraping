@@ -137,6 +137,29 @@ def standardize_date(date_str):
     return date_str
 
 
+def clean_location(location):
+    """Clean and validate location field - remove obvious corruptions."""
+    if pd.isna(location) or location == '':
+        return 'Unknown'
+    
+    location = str(location).strip()
+    
+    # Remove clearly corrupted entries
+    corrupted_keywords = ['Investment', 'Department', 'Engineer I', 'Support jobs', 'vestment']
+    for keyword in corrupted_keywords:
+        if keyword in location:
+            return 'Other'
+    
+    # Remove RSS/feed artifacts
+    if location.endswith('.rss') or location.endswith('.xml'):
+        return 'Unknown'
+    
+    # Remove emoji
+    location = location.replace('🎧', '').strip()
+    
+    return location if location else 'Unknown'
+
+
 def filter_and_clean_dataset(jobs_df):
     """Apply comprehensive noise removal and cleaning."""
     print("\n" + "="*70)
@@ -150,7 +173,7 @@ def filter_and_clean_dataset(jobs_df):
     print("\n✓ Step 1: Removing emoji and corrupted characters...")
     jobs_df['department'] = jobs_df['department'].apply(remove_emoji_and_corruption)
     jobs_df['job_title'] = jobs_df['job_title'].apply(remove_emoji_and_corruption)
-    jobs_df['location'] = jobs_df['location'].apply(remove_emoji_and_corruption)
+    jobs_df['location'] = jobs_df['location'].apply(clean_location)  # Use proper location cleaning
     
     # 2. Remove rows with invalid departments
     print("✓ Step 2: Removing rows with corrupted department data...")

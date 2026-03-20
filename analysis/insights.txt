@@ -1,26 +1,52 @@
 Job Scraping and Analysis Insights
-===============================
-Total records: 163
+===================================
 
-Top 5 most demanded skills:
-- Api: 38
-- Api Rest: 19
-- Api Scala: 13
-- Rest Api: 10
-- Unknown: 10
+Total records: 47
+Data Source: Stripe, RemoteOK, We Work Remotely
+Status: Cleaned & Verified ✓
 
-Top locations/cities with most openings:
-- Unknown: 83
-- Toronto: 12
-- South San Francisco HQ: 8
-- Dublin HQ: 6
-- Seattle or South San Francisco HQ: 6
+==================================================
+Top 10 Most Demanded Skills:
+==================================================
+1. Rest API: 32 jobs (68.1%)
+2. API: 8 jobs (17.0%)
+3. Rest: 2 jobs (4.3%)
+4. Java ai: 1 jobs (2.1%)
+5. SQL: 1 jobs (2.1%)
+6. Java: 1 jobs (2.1%)
+7. Ai: 1 jobs (2.1%)
+8. Communication crm negotiation seo campaign analytics: 1 jobs (2.1%)
 
-Company with most active hiring:
-- Remoteok: 88
+==================================================
+Top 10 Locations/Cities with Most Openings:
+==================================================
+1. Remote: 10 jobs (21.3%)
+2. Toronto: 6 jobs (12.8%)
+3. Other: 6 jobs (12.8%)
+4. South San Francisco HQ: 4 jobs (8.5%)
+5. Seattle or South San Francisco HQ: 3 jobs (6.4%)
+6. Dublin HQ: 3 jobs (6.4%)
+7. Seattle: 2 jobs (4.3%)
+8. Paris: 1 jobs (2.1%)
+9. New York: 1 jobs (2.1%)
+10. New York or South San Francisco HQ: 1 jobs (2.1%)
 
-Internship vs Full-time roles:
-- Internship count: 74
-- Full-time count: 24
-- Internship percentage: 45.40%
-- Full-time percentage: 14.72%
+==================================================
+Company Hiring Distribution:
+==================================================
+- Stripe: 27 jobs (57.4%)
+- RemoteOK: 10 jobs (21.3%)
+- We Work Remotely: 10 jobs (21.3%)
+
+==================================================
+Employment Type Distribution:
+==================================================
+- Intern: 29 jobs (61.7%)
+- Full-time: 12 jobs (25.5%)
+- Contract: 4 jobs (8.5%)
+- Not specified: 2 jobs (4.3%)
+
+==================================================
+Experience Level Distribution:
+==================================================
+- Not specified: 47 jobs (100.0%)
