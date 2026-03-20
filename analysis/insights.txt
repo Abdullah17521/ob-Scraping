@@ -1,9 +1,26 @@
-Data Science Web Scraping Insights
-==============================
-Total jobs analyzed: 328
-Average numeric salary (USD-like normalized): 577954.11
+Job Scraping and Analysis Insights
+===============================
+Total records: 163
 
-Top 5 demanded skills:
+Top 5 most demanded skills:
+- Api: 38
+- Api Rest: 19
+- Api Scala: 13
+- Rest Api: 10
+- Unknown: 10
 
-Top 3 locations for Software Engineer roles:
-- None found for 'Software Engineer' role titles
+Top locations/cities with most openings:
+- Unknown: 83
+- Toronto: 12
+- South San Francisco HQ: 8
+- Dublin HQ: 6
+- Seattle or South San Francisco HQ: 6
+
+Company with most active hiring:
+- Remoteok: 88
+
+Internship vs Full-time roles:
+- Internship count: 74
+- Full-time count: 24
+- Internship percentage: 45.40%
+- Full-time percentage: 14.72%
