@@ -1,0 +1,763 @@
+2026-03-21 01:07:27 [scrapy.utils.log] INFO: Scrapy 2.14.2 started (bot: scrapy_project)
+2026-03-21 01:07:27 [scrapy.utils.log] INFO: Versions:
+{'lxml': '6.0.2',
+ 'libxml2': '2.11.9',
+ 'cssselect': '1.4.0',
+ 'parsel': '1.11.0',
+ 'w3lib': '2.4.0',
+ 'Twisted': '25.5.0',
+ 'Python': '3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 '
+           '64 bit (AMD64)]',
+ 'pyOpenSSL': '26.0.0 (OpenSSL 3.5.5 27 Jan 2026)',
+ 'cryptography': '46.0.5',
+ 'Platform': 'Windows-10-10.0.19045-SP0'}
+2026-03-21 01:07:27 [scrapy.crawler] DEBUG: Using AsyncCrawlerProcess
+2026-03-21 01:07:27 [asyncio] DEBUG: Using selector: SelectSelector
+2026-03-21 01:07:27 [scrapy.addons] INFO: Enabled addons:
+[]
+2026-03-21 01:07:27 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.asyncioreactor.AsyncioSelectorReactor
+2026-03-21 01:07:27 [scrapy.utils.log] DEBUG: Using asyncio event loop: asyncio.windows_events._WindowsSelectorEventLoop
+2026-03-21 01:07:27 [scrapy.extensions.telnet] INFO: Telnet Password: 62bb37dc09c77d5a
+2026-03-21 01:07:27 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.logcount.LogCount',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.feedexport.FeedExporter',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.throttle.AutoThrottle']
+2026-03-21 01:07:27 [scrapy.crawler] INFO: Overridden settings:
+{'AUTOTHROTTLE_ENABLED': True,
+ 'AUTOTHROTTLE_MAX_DELAY': 3.0,
+ 'AUTOTHROTTLE_START_DELAY': 1.0,
+ 'BOT_NAME': 'scrapy_project',
+ 'CONCURRENT_REQUESTS': 8,
+ 'DOWNLOAD_DELAY': 1.5,
+ 'FEED_EXPORT_ENCODING': 'utf-8-sig',
+ 'LOG_FILE': 'scrape.log',
+ 'NEWSPIDER_MODULE': 'scrapy_project.spiders',
+ 'SPIDER_MODULES': ['scrapy_project.spiders']}
+2026-03-21 01:07:27 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2026-03-21 01:07:27 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.start.StartSpiderMiddleware',
+ 'scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2026-03-21 01:07:27 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2026-03-21 01:07:27 [scrapy.core.engine] INFO: Spider opened
+2026-03-21 01:07:27 [py.warnings] WARNING: C:\Users\usama\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\scrapy\core\spidermw.py:490: ScrapyDeprecationWarning: scrapy_project.spiders.job_spider.JobSpider defines the deprecated start_requests() method. start_requests() has been deprecated in favor of a new method, start(), to support asynchronous code execution. start_requests() will stop being called in a future version of Scrapy. If you use Scrapy 2.13 or higher only, replace start_requests() with start(); note that start() is a coroutine (async def). If you need to maintain compatibility with lower Scrapy versions, when overriding start_requests() in a spider class, override start() as well; you can use super() to reuse the inherited start() implementation without copy-pasting. See the release notes of Scrapy 2.13 for details: https://docs.scrapy.org/en/2.13/news.html
+  warn(
+
+2026-03-21 01:07:27 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2026-03-21 01:07:27 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2026-03-21 01:07:28 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-api-engineer-privacy-products/7579264> (referer: None)
+2026-03-21 01:07:28 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-api-engineer-privacy-products/7579264>
+{'company_name': 'Stripe',
+ 'department': 'Security',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Security team.',
+ 'job_title': 'Backend / API Engineer Privacy Products',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-api-engineer-privacy-products/7579264',
+ 'location': 'Seattle or South San Francisco HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R API Java Data Pipeline Excel',
+ 'salary': '$190 400 - $285 600.'}
+2026-03-21 01:07:28 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/mobena-frontend-engineer> (referer: None)
+2026-03-21 01:07:28 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/mobena-frontend-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:29 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/affiliate-services-licensing-specialist-regulatory-affairs-noram/7695357> (referer: None)
+2026-03-21 01:07:30 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/affiliate-services-licensing-specialist-regulatory-affairs-noram/7695357>
+{'company_name': 'Stripe',
+ 'department': 'Legal',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Legal team.',
+ 'job_title': 'Affiliate Services Licensing Specialist Regulatory Affairs '
+              '(NORAM)',
+ 'job_url': 'https://stripe.com/jobs/listing/affiliate-services-licensing-specialist-regulatory-affairs-noram/7695357',
+ 'location': 'New York',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Git API Data Pipeline Excel',
+ 'salary': '$158 400 - $237 600.'}
+2026-03-21 01:07:30 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/senja-customer-growth-marketer> (referer: None)
+2026-03-21 01:07:30 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/senja-customer-growth-marketer>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:31 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-billing-tax/7217048> (referer: None)
+2026-03-21 01:07:31 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-billing-tax/7217048>
+{'company_name': 'Stripe',
+ 'department': 'Revenue & Financial Automation',
+ 'employment_type': 'Contract',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Revenue & Financial Automation team.',
+ 'job_title': 'Backend Engineer Billing/Tax',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-billing-tax/7217048',
+ 'location': 'Toronto',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Git Java REST API API Data Pipeline',
+ 'salary': '$135 200'}
+2026-03-21 01:07:32 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/nogigiddy-remote-data-entry-clerk-7> (referer: None)
+2026-03-21 01:07:32 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/nogigiddy-remote-data-entry-clerk-7>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:33 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/android-engineer-terminal/7543559> (referer: None)
+2026-03-21 01:07:33 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/android-engineer-terminal/7543559>
+{'company_name': 'Stripe',
+ 'department': 'Terminal',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Terminal team.',
+ 'job_title': 'Android Engineer Terminal',
+ 'job_url': 'https://stripe.com/jobs/listing/android-engineer-terminal/7543559',
+ 'location': 'Toronto',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Python Scala Java Kotlin API Data Pipeline',
+ 'salary': '$135 200'}
+2026-03-21 01:07:34 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/scout-solutions-devops-engineer> (referer: None)
+2026-03-21 01:07:34 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/scout-solutions-devops-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:34 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-startup-saas-platforms-existing-business/7451383> (referer: None)
+2026-03-21 01:07:34 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-startup-saas-platforms-existing-business/7451383>
+{'company_name': 'Stripe',
+ 'department': 'Sales',
+ 'employment_type': 'Contract',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Sales team.',
+ 'job_title': 'Account Executive Startup SaaS Platforms - Existing Business',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-startup-saas-platforms-existing-business/7451383',
+ 'location': 'Dublin HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R REST API API Data Pipeline',
+ 'salary': '€133 300 - €199 900.'}
+2026-03-21 01:07:35 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/hello-there-collective-affiliate-marketing-manager> (referer: None)
+2026-03-21 01:07:36 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/hello-there-collective-affiliate-marketing-manager>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:36 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/android-engineer-terminal-developer-productivity/7550154> (referer: None)
+2026-03-21 01:07:36 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/android-engineer-terminal-developer-productivity/7550154>
+{'company_name': 'Stripe',
+ 'department': 'Terminal',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Terminal team.',
+ 'job_title': 'Android Engineer Terminal Developer Productivity',
+ 'job_url': 'https://stripe.com/jobs/listing/android-engineer-terminal-developer-productivity/7550154',
+ 'location': 'Seattle or South San Francisco HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Git Scala Java Kotlin API Data Pipeline',
+ 'salary': '$190 400 - $285 600.'}
+2026-03-21 01:07:37 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/atmosera-collaborative-engineer-github-copilot-remote-us> (referer: None)
+2026-03-21 01:07:37 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/atmosera-collaborative-engineer-github-copilot-remote-us>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:37 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-core-technology/6623777> (referer: None)
+2026-03-21 01:07:38 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-core-technology/6623777>
+{'company_name': 'Stripe',
+ 'department': 'Infrastructure & Corporate Tech',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Infrastructure & Corporate Tech team.',
+ 'job_title': 'Backend Engineer Core Technology',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-core-technology/6623777',
+ 'location': 'Bucharest',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Python Scala Java Kotlin JavaScript REST API API Data '
+                    'Pipeline Excel',
+ 'salary': 'Not specified'}
+2026-03-21 01:07:38 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weworkremotely.com/categories/remote-devops-sysadmin-jobs> (referer: None)
+2026-03-21 01:07:38 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weworkremotely.com/categories/remote-devops-sysadmin-jobs>
+{'company_name': 'Weworkremotely',
+ 'department': 'McLean Virginia United States',
+ 'employment_type': 'Full-time',
+ 'experience_level': 'Not specified',
+ 'job_description': 'The latest remote devops and sysadmin jobs from top '
+                    'remote companies! Find your new devops and sysadmin '
+                    'Career today on We Work Remotely!',
+ 'job_title': 'Remote DevOps and Sysadmin Jobs',
+ 'job_url': 'https://weworkremotely.com/categories/remote-devops-sysadmin-jobs',
+ 'location': 'Unknown',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R AWS Azure Git Java',
+ 'salary': '$9'}
+2026-03-21 01:07:39 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/avenue-engineering-lead> (referer: None)
+2026-03-21 01:07:40 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/avenue-engineering-lead>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:40 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/android-engineer-terminal-os-platform/7557403> (referer: None)
+2026-03-21 01:07:40 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/android-engineer-terminal-os-platform/7557403>
+{'company_name': 'Stripe',
+ 'department': 'Terminal',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Terminal team.',
+ 'job_title': 'Android Engineer Terminal OS Platform',
+ 'job_url': 'https://stripe.com/jobs/listing/android-engineer-terminal-os-platform/7557403',
+ 'location': 'Seattle or South San Francisco HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Scala Kotlin API Data Pipeline',
+ 'salary': '$190 400 - $285 600.'}
+2026-03-21 01:07:41 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/learncube-senior-account-manager-dach-saas-corporate-training-edtech> (referer: None)
+2026-03-21 01:07:42 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/learncube-senior-account-manager-dach-saas-corporate-training-edtech>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-payments-and-risk/7232592> (referer: None)
+2026-03-21 01:07:42 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-payments-and-risk/7232592>
+{'company_name': 'Stripe',
+ 'department': 'Payments',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Payments team.',
+ 'job_title': 'Backend Engineer Payments and Risk',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-payments-and-risk/7232592',
+ 'location': 'South San Francisco HQ New York or Seattle',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R AWS Docker Kubernetes GraphQL REST API API Data '
+                    'Pipeline',
+ 'salary': '$155 700 - $285 600.'}
+2026-03-21 01:07:43 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/renesas-electronics-staff-product-engineer> (referer: None)
+2026-03-21 01:07:43 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/renesas-electronics-staff-product-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:44 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/ai-solutions-developer-finance/7646513> (referer: None)
+2026-03-21 01:07:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/ai-solutions-developer-finance/7646513>
+{'company_name': 'Stripe',
+ 'department': 'Controllership',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Controllership team.',
+ 'job_title': 'AI Solutions Developer Finance',
+ 'job_url': 'https://stripe.com/jobs/listing/ai-solutions-developer-finance/7646513',
+ 'location': 'Bengaluru',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Python SQL Data Analysis Data Engineering Git Scala API '
+                    'ETL Data Pipeline Excel Analytics',
+ 'salary': 'Not specified'}
+2026-03-21 01:07:45 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-developer-experience-product-platform/7292520> (referer: None)
+2026-03-21 01:07:45 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/toptal-account-manager-account-supervisor> (referer: None)
+2026-03-21 01:07:45 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-developer-experience-product-platform/7292520>
+{'company_name': 'Stripe',
+ 'department': 'Platform',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Platform team.',
+ 'job_title': 'Backend Engineer Developer Experience & Product Platform',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-developer-experience-product-platform/7292520',
+ 'location': 'Toronto',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R AWS Scala Java API Data Pipeline',
+ 'salary': '$135 200'}
+2026-03-21 01:07:46 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/toptal-account-manager-account-supervisor>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:47 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/ai-ml-engineering-manager-payment-intelligence/7286376> (referer: None)
+2026-03-21 01:07:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/ai-ml-engineering-manager-payment-intelligence/7286376>
+{'company_name': 'Stripe',
+ 'department': 'Payments',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Payments team.',
+ 'job_title': 'AI/ML Engineering Manager Payment Intelligence',
+ 'job_url': 'https://stripe.com/jobs/listing/ai-ml-engineering-manager-payment-intelligence/7286376',
+ 'location': 'Seattle',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Machine Learning Regression Scala API Data Pipeline '
+                    'Analytics',
+ 'salary': '$1.4'}
+2026-03-21 01:07:49 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/6692166> (referer: None)
+2026-03-21 01:07:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/6692166>
+{'company_name': 'Stripe',
+ 'department': 'Risk & Financial Crimes',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our Risk '
+                    '& Financial Crimes team.',
+ 'job_title': 'Backend Engineer/API Payments and Risk',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/6692166',
+ 'location': 'Seattle',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R AWS Docker Kubernetes GraphQL REST API API Data '
+                    'Pipeline',
+ 'salary': '$190 400 - $285 600.'}
+2026-03-21 01:07:49 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/storeganise-customer-service-specialist-remote-americas-english-spanish-required> (referer: None)
+2026-03-21 01:07:50 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/storeganise-customer-service-specialist-remote-americas-english-spanish-required>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:50 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-core-tech-canada/6567253> (referer: None)
+2026-03-21 01:07:50 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-core-tech-canada/6567253>
+{'company_name': 'Stripe',
+ 'department': 'Infrastructure & Corporate Tech',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Infrastructure & Corporate Tech team.',
+ 'job_title': 'Backend Engineer Core Tech Canada',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-core-tech-canada/6567253',
+ 'location': 'Toronto',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Machine Learning Scala Java API Data Pipeline Data '
+                    'Warehouse Analytics',
+ 'salary': '$135 200'}
+2026-03-21 01:07:52 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-forward-deployed-engineering/7249744> (referer: None)
+2026-03-21 01:07:52 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-forward-deployed-engineering/7249744>
+{'company_name': 'Stripe',
+ 'department': 'Revenue & Financial Automation',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Revenue & Financial Automation team.',
+ 'job_title': 'Backend Engineer Forward Deployed Engineering',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-forward-deployed-engineering/7249744',
+ 'location': 'Toronto',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Scala REST API API Data Pipeline Excel',
+ 'salary': '$135 200'}
+2026-03-21 01:07:53 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/storyteller-junior-web-developer> (referer: None)
+2026-03-21 01:07:53 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-platforms-grower/7577015> (referer: None)
+2026-03-21 01:07:54 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-platforms-grower/7577015>
+{'company_name': 'Stripe',
+ 'department': 'Sales',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Sales team.',
+ 'job_title': 'Account Executive Platforms (Grower)',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-platforms-grower/7577015',
+ 'location': 'South San Francisco HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R REST API API Data Pipeline',
+ 'salary': '$262 900 - $394 300.'}
+2026-03-21 01:07:54 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/storyteller-junior-web-developer>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:55 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/constructive-open-call-for-freelance-wordpress-drupal-developers-remote-usa> (referer: None)
+2026-03-21 01:07:56 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/constructive-open-call-for-freelance-wordpress-drupal-developers-remote-usa>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:56 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-ai-sales/7532733> (referer: None)
+2026-03-21 01:07:56 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-ai-sales/7532733>
+{'company_name': 'Stripe',
+ 'department': 'Sales',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Sales team.',
+ 'job_title': 'Account Executive AI Sales',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-ai-sales/7532733',
+ 'location': 'South San Francisco HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R REST API API Data Pipeline',
+ 'salary': '$375 800 - $563 600.'}
+2026-03-21 01:07:57 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/the-church-of-jesus-christ-of-latter-day-saints-frontend-web-development-grader-byu-pathway-worldwide-1> (referer: None)
+2026-03-21 01:07:58 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/the-church-of-jesus-christ-of-latter-day-saints-frontend-web-development-grader-byu-pathway-worldwide-1>: HTTP status code is not handled or not allowed
+2026-03-21 01:07:58 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-core-technology/7182617> (referer: None)
+2026-03-21 01:07:58 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-core-technology/7182617>
+{'company_name': 'Stripe',
+ 'department': 'Infrastructure & Corporate Tech',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Infrastructure & Corporate Tech team.',
+ 'job_title': 'Backend Engineer Core Technology',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-core-technology/7182617',
+ 'location': 'Dublin HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Machine Learning Scala REST API API Data Pipeline Excel',
+ 'salary': '€85 000 - €159 600.'}
+2026-03-21 01:07:59 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/toptal-group-account-director> (referer: None)
+2026-03-21 01:07:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-hunter-uk-enterprise-retail/7451366> (referer: None)
+2026-03-21 01:07:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-hunter-uk-enterprise-retail/7451366>
+{'company_name': 'Stripe',
+ 'department': 'Sales',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Sales team.',
+ 'job_title': 'Account Executive (Hunter) UK Enterprise Retail',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-hunter-uk-enterprise-retail/7451366',
+ 'location': 'London',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R REST API API Data Pipeline',
+ 'salary': '£165 000 - £247 400.'}
+2026-03-21 01:07:59 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/toptal-group-account-director>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-startup-platforms-existing-business/7339700> (referer: None)
+2026-03-21 01:08:01 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-startup-platforms-existing-business/7339700>
+{'company_name': 'Stripe',
+ 'department': 'Sales',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Sales team.',
+ 'job_title': 'Account Executive Startup Platforms (Existing Business)',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-startup-platforms-existing-business/7339700',
+ 'location': 'South San Francisco HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Scala API Data Pipeline',
+ 'salary': '$163 600 - $245 400.'}
+2026-03-21 01:08:01 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/allianz-engineer-surveyor-lift-crane-south-london> (referer: None)
+2026-03-21 01:08:02 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/allianz-engineer-surveyor-lift-crane-south-london>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:03 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-core-technology/6042172> (referer: None)
+2026-03-21 01:08:03 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/uptalent-io-remote-landscape-designer> (referer: None)
+2026-03-21 01:08:03 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-core-technology/6042172>
+{'company_name': 'Stripe',
+ 'department': 'Infrastructure & Corporate Tech',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Infrastructure & Corporate Tech team.',
+ 'job_title': 'Backend Engineer Core Technology',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-core-technology/6042172',
+ 'location': 'New York South San Francisco HQ or Seattle',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Machine Learning Scala Java API Data Pipeline Data '
+                    'Warehouse Analytics',
+ 'salary': '$173 000 - $259 600.'}
+2026-03-21 01:08:03 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/uptalent-io-remote-landscape-designer>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:04 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/rimini-street-gvp-regional-gm-anz> (referer: None)
+2026-03-21 01:08:04 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/rimini-street-gvp-regional-gm-anz>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:04 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-platforms-existing-business/7576967> (referer: None)
+2026-03-21 01:08:04 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-platforms-existing-business/7576967>
+{'company_name': 'Stripe',
+ 'department': 'Sales',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Sales team.',
+ 'job_title': 'Account Executive Platforms (Existing Business)',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-platforms-existing-business/7576967',
+ 'location': 'Chicago South San Francisco HQ or New York',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R REST API API Data Pipeline',
+ 'salary': '$283 600 - $425 400.'}
+2026-03-21 01:08:06 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-data/6865161> (referer: None)
+2026-03-21 01:08:06 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-data/6865161>
+{'company_name': 'Stripe',
+ 'department': 'Data Platform',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our Data '
+                    'Platform team.',
+ 'job_title': 'Backend Engineer Data',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-data/6865161',
+ 'location': 'Toronto',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Python SQL Data Science Data Engineering Apache Spark '
+                    'Hadoop Scala Java REST API API Data Pipeline Data '
+                    'Warehouse Airflow',
+ 'salary': '$135 200'}
+2026-03-21 01:08:07 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/wevote-director-of-outreach> (referer: None)
+2026-03-21 01:08:07 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/wevote-director-of-outreach>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:07 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-ai-sales/7546284> (referer: None)
+2026-03-21 01:08:07 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-ai-sales/7546284>
+{'company_name': 'Stripe',
+ 'department': 'Sales',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Sales team.',
+ 'job_title': 'Account Executive AI Sales',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-ai-sales/7546284',
+ 'location': 'South San Francisco HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R REST API API Data Pipeline',
+ 'salary': '$262 900 - $394 300.'}
+2026-03-21 01:08:09 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/4921361> (referer: None)
+2026-03-21 01:08:09 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/4921361>
+{'company_name': 'Stripe',
+ 'department': 'Payments',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Payments team.',
+ 'job_title': 'Backend Engineer/API Payments and Risk',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/4921361',
+ 'location': 'Dublin HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R AWS Docker Kubernetes GraphQL REST API API Data '
+                    'Pipeline',
+ 'salary': '€85 000 - €159 600.'}
+2026-03-21 01:08:11 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-platforms-strategics/7604080> (referer: None)
+2026-03-21 01:08:12 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-platforms-strategics/7604080>
+{'company_name': 'Stripe',
+ 'department': 'Sales',
+ 'employment_type': 'Intern',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Sales team.',
+ 'job_title': 'Account Executive Platforms - Strategics',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-platforms-strategics/7604080',
+ 'location': 'New York or South San Francisco HQ',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R API Data Pipeline',
+ 'salary': '$312 000 - $468 000.'}
+2026-03-21 01:08:12 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/solventum-co-client-support-agent-with-german-m-f> (referer: None)
+2026-03-21 01:08:12 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/solventum-co-client-support-agent-with-german-m-f>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:13 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-platforms-grower/7446841> (referer: None)
+2026-03-21 01:08:13 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-platforms-grower/7446841>
+{'company_name': 'Stripe',
+ 'department': 'Sales',
+ 'employment_type': 'Contract',
+ 'experience_level': 'Not specified',
+ 'job_description': 'Help increase the GDP of the internet as part of our '
+                    'Sales team.',
+ 'job_title': 'Account Executive Platforms (Grower)',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-platforms-grower/7446841',
+ 'location': 'Paris',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R REST API API Data Pipeline',
+ 'salary': '€153 800 - €230 600.'}
+2026-03-21 01:08:15 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/equipment-systems-corporation-business-development-representative> (referer: None)
+2026-03-21 01:08:15 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/equipment-systems-corporation-business-development-representative>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:19 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/planet-green-search-senior-account-executive-saas-remote-3> (referer: None)
+2026-03-21 01:08:19 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/planet-green-search-senior-account-executive-saas-remote-3>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:23 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/croz-dach-initiativbewerbung-w-m-d-in-voll-oder-teilzeit> (referer: None)
+2026-03-21 01:08:23 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/croz-dach-initiativbewerbung-w-m-d-in-voll-oder-teilzeit>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:26 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/ensono-aws-devops-engineer> (referer: None)
+2026-03-21 01:08:26 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/ensono-aws-devops-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 52 pages/min), scraped 28 items (at 28 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:27 [scrapy.extensions.logstats] INFO: Crawled 52 pages (at 0 pages/min), scraped 28 items (at 0 items/min)
+2026-03-21 01:08:29 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://weworkremotely.com/remote-jobs/ackama-business-development-manager> (failed 1 times): TCP connection timed out: 10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond..
+2026-03-21 01:08:30 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/adidev-technologies-senior-devops-engineer> (referer: None)
+2026-03-21 01:08:30 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/adidev-technologies-senior-devops-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:34 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/subscript-software-engineer-test> (referer: None)
+2026-03-21 01:08:34 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/subscript-software-engineer-test>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:42 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/preql-ai-product-design> (referer: None)
+2026-03-21 01:08:42 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/preql-ai-product-design>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:45 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/maverick-trading-stock-options-trader-trade-firm-capital-remote> (referer: None)
+2026-03-21 01:08:45 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/maverick-trading-stock-options-trader-trade-firm-capital-remote>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:47 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/maverick-trading-forex-crypto-trader-remote-1> (referer: None)
+2026-03-21 01:08:47 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/maverick-trading-forex-crypto-trader-remote-1>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:50 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/m365connect-ai-automation-internship-candidate-sourcing-recruitment-workflow-design> (referer: None)
+2026-03-21 01:08:50 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/m365connect-ai-automation-internship-candidate-sourcing-recruitment-workflow-design>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:54 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/magic-inc-account-executive-global-remote-1> (referer: None)
+2026-03-21 01:08:54 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/magic-inc-account-executive-global-remote-1>: HTTP status code is not handled or not allowed
+2026-03-21 01:08:56 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weworkremotely.com/categories/remote-customer-support-jobs.rss> (referer: None)
+2026-03-21 01:08:56 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weworkremotely.com/categories/remote-customer-support-jobs.rss>
+{'company_name': 'Weworkremotely',
+ 'department': 'Mon 16 Mar 2026 10:53:09 +0000',
+ 'employment_type': 'Full-time',
+ 'experience_level': 'Not specified',
+ 'job_description': 'No description',
+ 'job_title': 'We Work Remotely: Customer Support Jobs',
+ 'job_url': 'https://weworkremotely.com/categories/remote-customer-support-jobs.rss',
+ 'location': 'AZ CA ID OR TX WA',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R',
+ 'salary': '$12'}
+2026-03-21 01:08:58 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/boond-customer-care-1> (referer: None)
+2026-03-21 01:08:58 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/boond-customer-care-1>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:02 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/hospitable-senior-product-marketing-manager-usa-emea-remote> (referer: None)
+2026-03-21 01:09:02 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/hospitable-senior-product-marketing-manager-usa-emea-remote>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:04 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/nebulab-shopify-engineer> (referer: None)
+2026-03-21 01:09:05 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/nebulab-shopify-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:09 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/level-senior-frontend-engineer> (referer: None)
+2026-03-21 01:09:09 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/level-senior-frontend-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:11 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/danads-sales-representative-account-manager-tripadvisor-digital-advertising> (referer: None)
+2026-03-21 01:09:11 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/danads-sales-representative-account-manager-tripadvisor-digital-advertising>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:13 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/uncanny-owl-wordpress-developer> (referer: None)
+2026-03-21 01:09:13 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/uncanny-owl-wordpress-developer>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:14 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/ahu-technologies-technical-project-manager-atlanta-ga> (referer: None)
+2026-03-21 01:09:15 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/ahu-technologies-technical-project-manager-atlanta-ga>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:18 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weworkremotely.com/categories/remote-management-and-finance-jobs> (referer: None)
+2026-03-21 01:09:18 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weworkremotely.com/categories/remote-management-and-finance-jobs>
+{'company_name': 'Weworkremotely',
+ 'department': 'Unknown',
+ 'employment_type': 'Full-time',
+ 'experience_level': 'Not specified',
+ 'job_description': 'The latest remote management and finance jobs from top '
+                    'remote companies! Find your new management and finance '
+                    'Career today on We Work Remotely!',
+ 'job_title': 'Remote Management and Finance Jobs',
+ 'job_url': 'https://weworkremotely.com/categories/remote-management-and-finance-jobs',
+ 'location': 'Unknown',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Excel',
+ 'salary': '$9'}
+2026-03-21 01:09:20 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/culture-partners-culture-solutions-manager> (referer: None)
+2026-03-21 01:09:20 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/culture-partners-culture-solutions-manager>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:21 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/tko-intern-product-management-web-applications-on-location> (referer: None)
+2026-03-21 01:09:21 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/tko-intern-product-management-web-applications-on-location>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:22 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/m365connect-internship-ai-automation-candidate-sourcing-recruitment-workflow-design-4> (referer: None)
+2026-03-21 01:09:22 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/c4media-frontend-developer> (referer: None)
+2026-03-21 01:09:22 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/m365connect-internship-ai-automation-candidate-sourcing-recruitment-workflow-design-4>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:22 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/c4media-frontend-developer>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:24 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/inevitable-llc-content-operations-digital-workflow-coordinator> (referer: None)
+2026-03-21 01:09:24 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/inevitable-llc-content-operations-digital-workflow-coordinator>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:27 [scrapy.extensions.logstats] INFO: Crawled 73 pages (at 21 pages/min), scraped 30 items (at 2 items/min)
+2026-03-21 01:09:28 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/ebq-web-developer> (referer: None)
+2026-03-21 01:09:29 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/ebq-web-developer>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:36 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/classdojo-01-product-leader> (referer: None)
+2026-03-21 01:09:36 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/classdojo-01-product-leader>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:44 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/bamboo-works-senior-ai-operations-automation-manager> (referer: None)
+2026-03-21 01:09:44 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/bamboo-works-senior-ai-operations-automation-manager>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:47 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/the-class-consulting-group-marketing-graphic-and-web-designing-manager> (referer: None)
+2026-03-21 01:09:47 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/the-class-consulting-group-marketing-graphic-and-web-designing-manager>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:47 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/everai-senior-devops-engineer-full-remote-lithuania> (referer: None)
+2026-03-21 01:09:48 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/everai-senior-devops-engineer-full-remote-lithuania>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:50 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/job-for-arabists-business-solutions-finance-operations-manager-remote-part-time> (referer: None)
+2026-03-21 01:09:51 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/job-for-arabists-business-solutions-finance-operations-manager-remote-part-time>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:54 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weworkremotely.com/categories/remote-customer-support-jobs> (referer: None)
+2026-03-21 01:09:54 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weworkremotely.com/categories/remote-customer-support-jobs>
+{'company_name': 'Weworkremotely',
+ 'department': 'Unknown',
+ 'employment_type': 'Full-time',
+ 'experience_level': 'Not specified',
+ 'job_description': 'The latest remote customer support jobs from top remote '
+                    'companies! Find your new customer support Career today on '
+                    'We Work Remotely!',
+ 'job_title': 'Remote Customer Support Jobs',
+ 'job_url': 'https://weworkremotely.com/categories/remote-customer-support-jobs',
+ 'location': 'AZ CA ID OR TX WA at We Work Remotely',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R Git',
+ 'salary': '$9'}
+2026-03-21 01:09:55 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/avenue-back-end-engineer-senior> (referer: None)
+2026-03-21 01:09:55 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/avenue-back-end-engineer-senior>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:57 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/qibit-crm-implementation-senior> (referer: None)
+2026-03-21 01:09:57 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/qibit-crm-implementation-senior>: HTTP status code is not handled or not allowed
+2026-03-21 01:09:59 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/rimini-street-team-lead-command-center> (referer: None)
+2026-03-21 01:09:59 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/rimini-street-team-lead-command-center>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:01 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://weworkremotely.com/remote-jobs/lemon-io-senior-react-full-stack-developer-3> (failed 1 times): TCP connection timed out: 10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond..
+2026-03-21 01:10:01 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/crowdstrike-sr-engineer-cicd-devops-remote> (referer: None)
+2026-03-21 01:10:01 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/crowdstrike-sr-engineer-cicd-devops-remote>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:08 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/sanctuary-computer-senior-firmware-engineer> (referer: None)
+2026-03-21 01:10:09 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/sanctuary-computer-senior-firmware-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:11 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/steampunk-cloud-architect> (referer: None)
+2026-03-21 01:10:11 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/steampunk-cloud-architect>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:13 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/binary-co-digital-advertising-account-manager> (referer: None)
+2026-03-21 01:10:13 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/binary-co-digital-advertising-account-manager>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:15 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/wolters-kluwer-associate-director-technology-sales-support-solutions-consulting> (referer: None)
+2026-03-21 01:10:16 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/wolters-kluwer-associate-director-technology-sales-support-solutions-consulting>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:17 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/win-home-inspection-senior-devops-engineer> (referer: None)
+2026-03-21 01:10:17 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/win-home-inspection-senior-devops-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:21 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/lemon-io-head-of-engineering> (referer: None)
+2026-03-21 01:10:21 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/lemon-io-head-of-engineering>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:23 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/everai-accounts-payable-finance-operations-specialist-full-remote-europe> (referer: None)
+2026-03-21 01:10:24 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/everai-accounts-payable-finance-operations-specialist-full-remote-europe>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:25 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://weworkremotely.com/remote-jobs/media-cause-front-end-website-developer-contract-freelance> (failed 1 times): TCP connection timed out: 10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond..
+2026-03-21 01:10:27 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://weworkremotely.com/remote-jobs/restaurant365-director-talent-acquisition> (failed 1 times): TCP connection timed out: 10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond..
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 18 pages/min), scraped 31 items (at 1 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.extensions.logstats] INFO: Crawled 91 pages (at 0 pages/min), scraped 31 items (at 0 items/min)
+2026-03-21 01:10:27 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/a-team-senior-independent-software-developer-90-170-hr> (referer: None)
+2026-03-21 01:10:27 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/a-team-senior-independent-software-developer-90-170-hr>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:32 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/toptal-financially-literate-individual-for-audio-transcription> (referer: None)
+2026-03-21 01:10:33 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/toptal-financially-literate-individual-for-audio-transcription>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:34 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/oracle-bilingual-sr-principal-consultant-products-erp-netsuite-seeking-french-and-or-mandarin> (referer: None)
+2026-03-21 01:10:34 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/oracle-bilingual-sr-principal-consultant-products-erp-netsuite-seeking-french-and-or-mandarin>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:37 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weworkremotely.com/categories/remote-product-jobs.rss> (referer: None)
+2026-03-21 01:10:37 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weworkremotely.com/categories/remote-product-jobs.rss>
+{'company_name': 'Weworkremotely',
+ 'department': 'Mon 16 Mar 2026 20:31:52 +0000',
+ 'employment_type': 'Full-time',
+ 'experience_level': 'Not specified',
+ 'job_description': 'No description',
+ 'job_title': 'We Work Remotely: Product Jobs',
+ 'job_url': 'https://weworkremotely.com/categories/remote-product-jobs.rss',
+ 'location': 'ternational',
+ 'posted_date': '2026-03-21',
+ 'required_skills': 'R',
+ 'salary': '€1.000'}
+2026-03-21 01:10:39 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/codekeeper-business-development-representative> (referer: None)
+2026-03-21 01:10:39 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/codekeeper-business-development-representative>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:41 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/algrano-product-designer> (referer: None)
+2026-03-21 01:10:41 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/algrano-product-designer>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:44 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/walker-dunlop-senior-associate-valuation-financial-reporting> (referer: None)
+2026-03-21 01:10:44 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/walker-dunlop-senior-associate-valuation-financial-reporting>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:46 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/toptal-senior-software-engineer> (referer: None)
+2026-03-21 01:10:46 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/toptal-senior-software-engineer>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:47 [scrapy.core.engine] DEBUG: Crawled (403) <GET https://weworkremotely.com/remote-jobs/signet-jewelers-web-app-firewall-security-engineer-remote> (referer: None)
+2026-03-21 01:10:47 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <403 https://weworkremotely.com/remote-jobs/signet-jewelers-web-app-firewall-security-engineer-remote>: HTTP status code is not handled or not allowed
+2026-03-21 01:10:51 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET https://weworkremotely.com/remote-jobs/m365connect-internship-ai-automation-candidate-sourcing-recruitment-workflow-design-3> (failed 1 times): TCP connection timed out: 10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond..

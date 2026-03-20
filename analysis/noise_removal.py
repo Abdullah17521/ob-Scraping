@@ -5,7 +5,8 @@ Removes corrupted fields, invalid data, and standardizes formats.
 import pandas as pd
 from pathlib import Path
 import re
-from datetime import datetime
+import datetime
+from datetime import datetime as dt
 
 
 def remove_emoji_and_corruption(text):
@@ -91,15 +92,18 @@ def clean_salary(salary):
 
 
 def clean_job_description(desc):
-    """Validate job description length."""
+    """Clean job description - fill with 'Unknown' instead of dropping."""
     if pd.isna(desc) or desc == '':
-        return None
+        return 'No description provided'
     
     desc = str(desc).strip()
     
-    # Remove if too short (likely corrupted)
-    if len(desc) < 30:
-        return None
+    # Still clean the text, but don't drop
+    # Remove emoji
+    desc = desc.encode('ascii', 'ignore').decode('ascii')
+    
+    if len(desc) < 10:
+        return 'No description provided'
     
     return desc
 
@@ -114,7 +118,7 @@ def standardize_date(date_str):
     # Try to parse ISO format with timezone
     if 'T' in date_str and '+' in date_str:
         try:
-            date_obj = datetime.fromisoformat(date_str.replace('+00:00', ''))
+            date_obj = dt.fromisoformat(date_str.replace('+00:00', ''))
             return date_obj.strftime('%Y-%m-%d')
         except:
             pass
@@ -122,14 +126,14 @@ def standardize_date(date_str):
     # Try to parse ISO format without timezone
     if 'T' in date_str:
         try:
-            date_obj = datetime.fromisoformat(date_str)
+            date_obj = dt.fromisoformat(date_str)
             return date_obj.strftime('%Y-%m-%d')
         except:
             pass
     
     # Try existing date format
     try:
-        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+        date_obj = dt.strptime(date_str, '%Y-%m-%d')
         return date_obj.strftime('%Y-%m-%d')
     except:
         pass
@@ -161,7 +165,7 @@ def clean_location(location):
 
 
 def filter_and_clean_dataset(jobs_df):
-    """Apply comprehensive noise removal and cleaning."""
+    """Apply comprehensive noise removal - fill missing fields instead of dropping records."""
     print("\n" + "="*70)
     print("COMPREHENSIVE NOISE REMOVAL & DATA QUALITY FILTERING")
     print("="*70)
@@ -173,14 +177,12 @@ def filter_and_clean_dataset(jobs_df):
     print("\n✓ Step 1: Removing emoji and corrupted characters...")
     jobs_df['department'] = jobs_df['department'].apply(remove_emoji_and_corruption)
     jobs_df['job_title'] = jobs_df['job_title'].apply(remove_emoji_and_corruption)
-    jobs_df['location'] = jobs_df['location'].apply(clean_location)  # Use proper location cleaning
+    jobs_df['location'] = jobs_df['location'].apply(clean_location)
     
-    # 2. Remove rows with invalid departments
-    print("✓ Step 2: Removing rows with corrupted department data...")
-    before = len(jobs_df)
-    jobs_df = jobs_df[jobs_df['department'].apply(is_valid_department)]
-    removed = before - len(jobs_df)
-    print(f"  Removed {removed} rows with corrupted departments")
+    # 2. Fill missing departments with "Unknown" instead of dropping
+    print("✓ Step 2: Filling missing or corrupted department data...")
+    jobs_df['department'] = jobs_df['department'].apply(lambda x: 'Unknown' if (pd.isna(x) or x == '' or not is_valid_department(x)) else x)
+    print(f"  Filled invalid departments with 'Unknown'")
     
     # 3. Clean experience level
     print("✓ Step 3: Cleaning experience level field...")
@@ -190,38 +192,53 @@ def filter_and_clean_dataset(jobs_df):
     print("✓ Step 4: Cleaning salary field...")
     jobs_df['salary'] = jobs_df['salary'].apply(clean_salary)
     
-    # 5. Validate job descriptions
-    print("✓ Step 5: Validating job descriptions...")
-    before = len(jobs_df)
-    jobs_df = jobs_df[jobs_df['job_description'].apply(clean_job_description).notna()]
-    removed = before - len(jobs_df)
-    print(f"  Removed {removed} rows with short/incomplete descriptions")
+    # 5. Validate job descriptions - fill instead of dropping
+    print("✓ Step 5: Filling incomplete job descriptions...")
+    jobs_df['job_description'] = jobs_df['job_description'].apply(clean_job_description)
+    print(f"  Filled short/missing descriptions with 'No description provided'")
     
     # 6. Standardize date format
     print("✓ Step 6: Standardizing date format...")
     jobs_df['posted_date'] = jobs_df['posted_date'].apply(standardize_date)
     
-    # 7. Remove any rows still with short job titles
-    print("✓ Step 7: Validating job titles...")
-    before = len(jobs_df)
-    jobs_df = jobs_df[jobs_df['job_title'].str.len() >= 3]
-    removed = before - len(jobs_df)
-    print(f"  Removed {removed} rows with invalid titles")
+    # 7. Fill missing job titles with "Unknown Job" instead of dropping
+    print("✓ Step 7: Filling missing job titles...")
+    jobs_df['job_title'] = jobs_df['job_title'].apply(lambda x: 'Unknown Job' if pd.isna(x) or x == '' or len(str(x).strip()) < 2 else x)
+    print(f"  Filled invalid titles with 'Unknown Job'")
     
-    # 8. Remove exact duplicates
+    # 8. Remove ONLY exact duplicates (keep all unique records)
     print("✓ Step 8: Removing exact duplicates...")
     before = len(jobs_df)
     jobs_df = jobs_df.drop_duplicates(subset=['job_url', 'job_title'], keep='first')
     removed = before - len(jobs_df)
     print(f"  Removed {removed} exact duplicates")
     
-    # 9. Reset index
+    # 9. Fill all remaining NaN values with appropriate defaults
+    print("✓ Step 9: Filling all remaining missing fields...")
+    default_values = {
+        'job_title': 'Unknown Job',
+        'company_name': 'Unknown Company',
+        'location': 'Unknown',
+        'department': 'Unknown',
+        'employment_type': 'Not specified',
+        'posted_date': datetime.date.today().isoformat(),
+        'job_url': 'No URL',
+        'job_description': 'No description provided',
+        'required_skills': 'Not specified',
+        'experience_level': 'Not specified',
+        'salary': 'Not specified'
+    }
+    for col, default in default_values.items():
+        if col in jobs_df.columns:
+            jobs_df[col] = jobs_df[col].fillna(default)
+    
+    # 10. Reset index
     jobs_df = jobs_df.reset_index(drop=True)
     
     print(f"\n{'='*70}")
     total_removed = original_count - len(jobs_df)
-    print(f"Total removed: {total_removed} rows")
-    print(f"Final dataset: {len(jobs_df)} jobs")
+    print(f"Total records removed (duplicates only): {total_removed}")
+    print(f"Final dataset: {len(jobs_df)} jobs (preserved all non-duplicate records)")
     print(f"{'='*70}\n")
     
     return jobs_df

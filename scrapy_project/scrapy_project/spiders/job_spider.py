@@ -21,69 +21,137 @@ def clean_for_csv(val):
 
 
 def extract_required_skills(description, response=None, job_title=None):
-    keywords = [
-        "python",
-        "sql",
-        "aws",
-        "azure",
-        "gcp",
-        "docker",
-        "kubernetes",
-        "spark",
-        "react",
-        "node",
-        "java",
-        "c++",
-        "scala",
-        "tensorflow",
-        "pytorch",
-        "javascript",
-        "typescript",
-        "pandas",
-        "numpy",
-        "linux",
-        "api",
-        "rest",
-        "graphql",
-        "hadoop",
-        "spark",
-    ]
-    text = (description or "").lower()
+    # CRITICAL Data Science & ML Keywords (prioritized)
+    ds_keywords = {
+        "python": "Python",
+        "sql": "SQL",
+        "machine learning": "Machine Learning",
+        "deep learning": "Deep Learning",
+        "data science": "Data Science",
+        "data analysis": "Data Analysis",
+        "data engineer": "Data Engineering",
+        "tensorflow": "TensorFlow",
+        "pytorch": "PyTorch",
+        "keras": "Keras",
+        "scikit-learn": "Scikit-learn",
+        "pandas": "Pandas",
+        "numpy": "NumPy",
+        "matplotlib": "Matplotlib",
+        "seaborn": "Seaborn",
+        "statistics": "Statistics",
+        "statistical": "Statistics",
+        "probability": "Probability",
+        "regression": "Regression",
+        "classification": "Classification",
+        "clustering": "Clustering",
+        "nlp": "NLP",
+        "natural language": "NLP",
+        "computer vision": "Computer Vision",
+        "cv ": "Computer Vision",
+        "spark": "Apache Spark",
+        "hadoop": "Hadoop",
+        "aws": "AWS",
+        "azure": "Azure",
+        "gcp": "Google Cloud",
+        "google cloud": "Google Cloud",
+        "bigquery": "BigQuery",
+        "redshift": "Redshift",
+        "snowflake": "Snowflake",
+        "tableau": "Tableau",
+        "power bi": "Power BI",
+        "powerbi": "Power BI",
+        "looker": "Looker",
+        "git": "Git",
+        "docker": "Docker",
+        "kubernetes": "Kubernetes",
+        "linux": "Linux",
+        "r ": "R",
+        " r": "R",
+        "scala": "Scala",
+        "java": "Java",
+        "kotlin": "Kotlin",
+        "javascript": "JavaScript",
+        "typescript": "TypeScript",
+        "react": "React",
+        "node": "Node.js",
+        "graphql": "GraphQL",
+        "rest api": "REST API",
+        "rest ": "REST API",
+        " api": "API",
+        "etl": "ETL",
+        "data pipeline": "Data Pipeline",
+        "data warehouse": "Data Warehouse",
+        "dbt": "DBT",
+        "airflow": "Airflow",
+        "kafka": "Kafka",
+        "jupyter": "Jupyter",
+        "colab": "Colab",
+        "spss": "SPSS",
+        "sas": "SAS",
+        "excel": "Excel",
+        "vba": "VBA",
+        "ab testing": "A/B Testing",
+        "experimentation": "Experimentation",
+        "analytics": "Analytics",
+        "visualization": "Visualization",
+    }
+    
+    text = (description or "").lower() + " " + (job_title or "").lower()
     found = []
-    for keyword in keywords:
+    
+    # Search for keywords in description and title
+    for keyword, normalized in ds_keywords.items():
         if keyword in text:
-            found.append("C++" if keyword == "c++" else keyword.title())
-
+            found.append(normalized)
+    
+    # Search in response HTML if provided
     if response is not None:
-        bullets = response.xpath("//li//text() | //p//text() | //div//text()").getall()
-        for b in bullets:
-            btext = b.strip().lower()
-            for keyword in keywords:
-                if keyword in btext:
-                    found.append("C++" if keyword == "c++" else keyword.title())
-
-    # fallback parse sections for skills list
+        try:
+            bullets = response.xpath("//li//text() | //p//text() | //div//text()").getall()
+            html_text = " ".join([str(b).lower() for b in bullets])
+            for keyword, normalized in ds_keywords.items():
+                if keyword in html_text:
+                    found.append(normalized)
+        except:
+            pass
+    
+    # Try to extract explicit skills section
     if not found:
-        m = re.search(r"(?:skills|requirements|qualifications)[:\s]*(.*)", description or "", flags=re.I)
+        m = re.search(r"(?:skills|requirements|qualifications|must have|nice to have)[:\s]*([^\n]*)", description or "", flags=re.I)
         if m:
-            for token in re.split(r",|;|\\n", m.group(1)):
-                token = token.strip()
-                if len(token) > 1:
-                    found.append(token.title())
-
-    filtered = [f for f in dict.fromkeys([x.strip() for x in found if x.strip() and len(x) > 2])]
+            for token in re.split(r",|;|/|\sand\s|&", m.group(1)):
+                token = token.strip().lower()
+                if len(token) > 2:
+                    for keyword, normalized in ds_keywords.items():
+                        if keyword in token:
+                            found.append(normalized)
+                            break
+    
+    # Deduplicate while preserving order
+    seen = set()
+    filtered = []
+    for f in found:
+        if f not in seen:
+            filtered.append(f)
+            seen.add(f)
+    
     if filtered:
-        return ", ".join(filtered)
-    # Fallback using title and department if no direct skills were found
-    fallback = []
+        return ", ".join(filtered[:15])  # Top 15 skills max
+    
+    # Intelligent fallback based on job title/role
+    fallback = set()
     t = " ".join(filter(None, [(description or "").lower(), (job_title or "").lower()]))
-    if "engineer" in t or "developer" in t or "data" in t or "ml" in t or "ai" in t:
-        fallback.extend(["Python", "SQL", "AWS"])
-    if "sales" in t:
-        fallback.extend(["Communication", "CRM", "Negotiation"])
-    if "marketing" in t:
-        fallback.extend(["SEO", "Campaign", "Analytics"])
-    return ", ".join(dict.fromkeys(fallback)) if fallback else "Unknown"
+    
+    if any(x in t for x in ["data scientist", "data science", "ds ", "ml engineer", "machine learning"]):
+        fallback.update(["Python", "SQL", "Machine Learning", "Data Analysis"])
+    if any(x in t for x in ["data engineer", "etl", "pipeline"]):
+        fallback.update(["Python", "SQL", "Apache Spark", "ETL"])
+    if any(x in t for x in ["analyst", "analytics", "bi ", "business intelligence"]):
+        fallback.update(["SQL", "Analytics", "Tableau", "Power BI"])
+    if any(x in t for x in ["backend", "engineer", "developer"]):
+        fallback.update(["Python", "Java", "SQL", "API"])
+    
+    return ", ".join(sorted(fallback)) if fallback else "Not specified"
 
 
 def extract_text_from_selectors(response, selectors):
