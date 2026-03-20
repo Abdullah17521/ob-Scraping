@@ -253,24 +253,13 @@ class JobSpider(scrapy.Spider):
         item["company_name"] = "Stripe" if "stripe.com" in response.url.lower() else company_from_url(response.url)
 
         raw_title = response.xpath("//title/text()").get() or ""
-        item["job_title"] = clean_text(raw_title.replace("| Stripe", "").strip()) or "Unknown"
+        item["job_title"] = clean_text(raw_title.replace("| Stripe", "").strip()) or response.xpath("//h1//text()").get() or "Unknown"
 
         location = clean_text(extract_location_from_details(response))
         if not location:
             location = clean_text(extract_location_from_text(response))
-        # If page includes 'Remote in X' in job details, prefer that.
         if not location:
-            remote_text = response.xpath("//p[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'remote in')]/text()").get()
-            if remote_text:
-                location = clean_text(remote_text)
-        # Fallback to title-based location from 'Title, Team, Location'.
-        if not location and "," in item["job_title"]:
-            parts = [p.strip() for p in item["job_title"].split(",") if p.strip()]
-            if len(parts) >= 2:
-                # Last part often location.
-                candidate = parts[-1]
-                if candidate.lower() not in ["remote", "unknown"]:
-                    location = clean_text(candidate)
+            location = response.xpath("//p[contains(text(), 'Remote')]/@text | //span[contains(text(), 'Remote')]/@text").get(default="").strip()
         item["location"] = location or "Unknown"
 
         department = clean_text(extract_job_detail_value(response, "Team"))
@@ -280,11 +269,20 @@ class JobSpider(scrapy.Spider):
                 m = re.search(r"as part of (?:our|the) ([^\.]+?team|[^\.]+?department|[^\.]+?group|[^\.]+)", department_meta, flags=re.I)
                 if m:
                     department = clean_text(m.group(1))
-        if not department:
-            department = clean_text(response.xpath("//div[contains(@class,'JobDetailCardProperty')]//p[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'team')]/text()").get(default=""))
         item["department"] = department or "Unknown"
-        item["job_description"] = clean_text(extract_text_from_selectors(response, ["meta[name='description']::attr(content)", "div#content *::text", "div.section.main *::text", "div.section *::text"])) or "No description"
+        
+        desc_candidates = [
+            response.css("meta[name='description']::attr(content)").get(default=""),
+            response.xpath("//div[@class='job-description']//text()").get(default=""),
+            response.xpath("//div[contains(@class,'description')]//text()").get(default=""),
+            response.xpath("//div[@class='content']//text()").get(default=""),
+            response.xpath("//article//text()").get(default=""),
+            response.xpath("//main//text()").get(default=""),
+        ]
+        item["job_description"] = clean_text(next((d for d in desc_candidates if d), "No description")) or "No description"
+        
         item["employment_type"] = clean_text(extract_employment_type(response)) or "Unknown"
+        
         posted_date = clean_text(response.xpath("//time/@datetime").get(default=""))
         if not posted_date:
             posted_date = clean_text(response.css("meta[property='article:published_time']::attr(content)").get(default=""))
