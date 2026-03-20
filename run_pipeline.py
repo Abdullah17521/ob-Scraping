@@ -15,6 +15,7 @@ def main():
     run("python selenium/selenium_scrape.py")
     run("python -m scrapy crawl job_spider -O ../data/final/jobs.csv", cwd="scrapy_project")
     run("python analysis/clean_jobs.py")
+    run("python analysis/filter_jobs.py")
     run("python analysis/analyze_jobs.py")
 
 
