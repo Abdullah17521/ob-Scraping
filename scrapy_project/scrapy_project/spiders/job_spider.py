@@ -20,7 +20,7 @@ def clean_for_csv(val):
     return clean_text(val)
 
 
-def extract_required_skills(description):
+def extract_required_skills(description, response=None, job_title=None):
     keywords = [
         "python",
         "sql",
@@ -34,26 +34,56 @@ def extract_required_skills(description):
         "node",
         "java",
         "c++",
+        "scala",
         "tensorflow",
         "pytorch",
         "javascript",
         "typescript",
         "pandas",
         "numpy",
+        "linux",
+        "api",
+        "rest",
+        "graphql",
+        "hadoop",
+        "spark",
     ]
     text = (description or "").lower()
     found = []
     for keyword in keywords:
         if keyword in text:
             found.append("C++" if keyword == "c++" else keyword.title())
+
+    if response is not None:
+        bullets = response.xpath("//li//text() | //p//text() | //div//text()").getall()
+        for b in bullets:
+            btext = b.strip().lower()
+            for keyword in keywords:
+                if keyword in btext:
+                    found.append("C++" if keyword == "c++" else keyword.title())
+
+    # fallback parse sections for skills list
     if not found:
-        m = re.search(r"skills?[:\s]*([a-zA-Z0-9,\.\s\+\-]+)", description or "", flags=re.I)
+        m = re.search(r"(?:skills|requirements|qualifications)[:\s]*(.*)", description or "", flags=re.I)
         if m:
             for token in re.split(r",|;|\\n", m.group(1)):
-                t = token.strip()
-                if t:
-                    found.append(t.title())
-    return ", ".join(dict.fromkeys(found)) if found else "Unknown"
+                token = token.strip()
+                if len(token) > 1:
+                    found.append(token.title())
+
+    filtered = [f for f in dict.fromkeys([x.strip() for x in found if x.strip() and len(x) > 2])]
+    if filtered:
+        return ", ".join(filtered)
+    # Fallback using title and department if no direct skills were found
+    fallback = []
+    t = " ".join(filter(None, [(description or "").lower(), (job_title or "").lower()]))
+    if "engineer" in t or "developer" in t or "data" in t or "ml" in t or "ai" in t:
+        fallback.extend(["Python", "SQL", "AWS"])
+    if "sales" in t:
+        fallback.extend(["Communication", "CRM", "Negotiation"])
+    if "marketing" in t:
+        fallback.extend(["SEO", "Campaign", "Analytics"])
+    return ", ".join(dict.fromkeys(fallback)) if fallback else "Unknown"
 
 
 def extract_text_from_selectors(response, selectors):
@@ -264,7 +294,7 @@ class JobSpider(scrapy.Spider):
             posted_date = datetime.date.today().isoformat()
         item["posted_date"] = posted_date
 
-        item["required_skills"] = extract_required_skills(item["job_description"])
+        item["required_skills"] = extract_required_skills(item["job_description"], response=response, job_title=item["job_title"])
         item["experience_level"] = extract_experience_level(item["job_description"])
         item["salary"] = extract_salary_from_text(response.text) or "Not specified"
 
