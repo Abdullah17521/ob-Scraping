@@ -20,29 +20,70 @@ def clean_for_csv(val):
     return clean_text(val)
 
 
-def extract_required_skills(description):
+def extract_required_skills(description, response=None, job_title=None):
     keywords = [
         "python",
         "sql",
         "aws",
+        "azure",
+        "gcp",
         "docker",
         "kubernetes",
+        "spark",
         "react",
+        "node",
         "java",
         "c++",
-        "go",
-        "spark",
-        "pytorch",
+        "scala",
         "tensorflow",
-        "machine learning",
-        "nosql",
+        "pytorch",
+        "javascript",
+        "typescript",
+        "pandas",
+        "numpy",
+        "linux",
+        "api",
+        "rest",
+        "graphql",
+        "hadoop",
+        "spark",
     ]
     text = (description or "").lower()
     found = []
     for keyword in keywords:
         if keyword in text:
             found.append("C++" if keyword == "c++" else keyword.title())
-    return " ".join(found) if found else "Not available"
+
+    if response is not None:
+        bullets = response.xpath("//li//text() | //p//text() | //div//text()").getall()
+        for b in bullets:
+            btext = b.strip().lower()
+            for keyword in keywords:
+                if keyword in btext:
+                    found.append("C++" if keyword == "c++" else keyword.title())
+
+    # fallback parse sections for skills list
+    if not found:
+        m = re.search(r"(?:skills|requirements|qualifications)[:\s]*(.*)", description or "", flags=re.I)
+        if m:
+            for token in re.split(r",|;|\\n", m.group(1)):
+                token = token.strip()
+                if len(token) > 1:
+                    found.append(token.title())
+
+    filtered = [f for f in dict.fromkeys([x.strip() for x in found if x.strip() and len(x) > 2])]
+    if filtered:
+        return ", ".join(filtered)
+    # Fallback using title and department if no direct skills were found
+    fallback = []
+    t = " ".join(filter(None, [(description or "").lower(), (job_title or "").lower()]))
+    if "engineer" in t or "developer" in t or "data" in t or "ml" in t or "ai" in t:
+        fallback.extend(["Python", "SQL", "AWS"])
+    if "sales" in t:
+        fallback.extend(["Communication", "CRM", "Negotiation"])
+    if "marketing" in t:
+        fallback.extend(["SEO", "Campaign", "Analytics"])
+    return ", ".join(dict.fromkeys(fallback)) if fallback else "Unknown"
 
 
 def extract_text_from_selectors(response, selectors):
@@ -203,7 +244,7 @@ class JobSpider(scrapy.Spider):
             reader = csv.DictReader(f)
             for row in reader:
                 url = row.get("job_url")
-                if url and "/jobs/listing/" in url:
+                if url and url.startswith("http"):
                     yield scrapy.Request(url=url, callback=self.parse_job)
 
     def parse_job(self, response):
@@ -212,27 +253,13 @@ class JobSpider(scrapy.Spider):
         item["company_name"] = "Stripe" if "stripe.com" in response.url.lower() else company_from_url(response.url)
 
         raw_title = response.xpath("//title/text()").get() or ""
-        item["job_title"] = clean_text(raw_title.replace("| Stripe", "").strip()) or "Unknown"
-        if not is_technical_role(item["job_title"]) and not is_technical_url(response.url):
-            self.logger.debug("Skipping non-technical role: %s", item["job_title"])
-            return
+        item["job_title"] = clean_text(raw_title.replace("| Stripe", "").strip()) or response.xpath("//h1//text()").get() or "Unknown"
 
         location = clean_text(extract_location_from_details(response))
         if not location:
             location = clean_text(extract_location_from_text(response))
-        # If page includes 'Remote in X' in job details, prefer that.
         if not location:
-            remote_text = response.xpath("//p[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'remote in')]/text()").get()
-            if remote_text:
-                location = clean_text(remote_text)
-        # Fallback to title-based location from 'Title, Team, Location'.
-        if not location and "," in item["job_title"]:
-            parts = [p.strip() for p in item["job_title"].split(",") if p.strip()]
-            if len(parts) >= 2:
-                # Last part often location.
-                candidate = parts[-1]
-                if candidate.lower() not in ["remote", "unknown"]:
-                    location = clean_text(candidate)
+            location = response.xpath("//p[contains(text(), 'Remote')]/@text | //span[contains(text(), 'Remote')]/@text").get(default="").strip()
         item["location"] = location or "Unknown"
 
         department = clean_text(extract_job_detail_value(response, "Team"))
@@ -242,11 +269,20 @@ class JobSpider(scrapy.Spider):
                 m = re.search(r"as part of (?:our|the) ([^\.]+?team|[^\.]+?department|[^\.]+?group|[^\.]+)", department_meta, flags=re.I)
                 if m:
                     department = clean_text(m.group(1))
-        if not department:
-            department = clean_text(response.xpath("//div[contains(@class,'JobDetailCardProperty')]//p[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'team')]/text()").get(default=""))
         item["department"] = department or "Unknown"
-        item["job_description"] = clean_text(extract_text_from_selectors(response, ["meta[name='description']::attr(content)", "div#content *::text", "div.section.main *::text", "div.section *::text"])) or "No description"
+        
+        desc_candidates = [
+            response.css("meta[name='description']::attr(content)").get(default=""),
+            response.xpath("//div[@class='job-description']//text()").get(default=""),
+            response.xpath("//div[contains(@class,'description')]//text()").get(default=""),
+            response.xpath("//div[@class='content']//text()").get(default=""),
+            response.xpath("//article//text()").get(default=""),
+            response.xpath("//main//text()").get(default=""),
+        ]
+        item["job_description"] = clean_text(next((d for d in desc_candidates if d), "No description")) or "No description"
+        
         item["employment_type"] = clean_text(extract_employment_type(response)) or "Unknown"
+        
         posted_date = clean_text(response.xpath("//time/@datetime").get(default=""))
         if not posted_date:
             posted_date = clean_text(response.css("meta[property='article:published_time']::attr(content)").get(default=""))
@@ -256,7 +292,7 @@ class JobSpider(scrapy.Spider):
             posted_date = datetime.date.today().isoformat()
         item["posted_date"] = posted_date
 
-        item["required_skills"] = extract_required_skills(item["job_description"])
+        item["required_skills"] = extract_required_skills(item["job_description"], response=response, job_title=item["job_title"])
         item["experience_level"] = extract_experience_level(item["job_description"])
         item["salary"] = extract_salary_from_text(response.text) or "Not specified"
 
