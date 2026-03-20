@@ -1,76 +1,61 @@
-import pandas as pd
-import re
+﻿import pandas as pd
 from pathlib import Path
+import re
 
-
-def parse_salary_numeric(value):
-    if pd.isna(value):
-        return None
-    text = str(value)
-    # find numeric salary values like $100,000 or 100000
-    matches = re.findall(r"\$?([0-9]{1,3}(?:,[0-9]{3})*(?:\.[0-9]+)?)", text.replace("k", "000"))
-    nums = []
-    for m in matches:
-        try:
-            n = float(m.replace(",", ""))
-            nums.append(n)
-        except ValueError:
-            continue
-    if not nums:
-        return None
-    if len(nums) == 1:
-        return nums[0]
-    return sum(nums) / len(nums)
-
-
-def normalize_skill_list(cell):
-    if pd.isna(cell) or not str(cell).strip():
+def split_skills(skills):
+    if pd.isna(skills):
         return []
-    parts = [p.strip() for p in re.split(r",|;|\n", str(cell)) if p.strip()]
-    return parts
+    if isinstance(skills, list):
+        return skills
+    text = str(skills)
+    tokens = re.split(r",|;|\\n|\\|\\/", text)
+    return [t.strip() for t in tokens if t.strip()]
 
 
 def main():
-    data_path = Path("data") / "final" / "jobs_clean.csv"
+    data_path = Path("data") / "final" / "jobs.csv"
     if not data_path.exists():
-        print("jobs_clean.csv not found. Run the spider and cleanup first.")
+        print(f"Missing {data_path}. Run scrapy spider first.")
         return
 
     df = pd.read_csv(data_path)
+    print(f"Loaded {len(df)} job rows")
 
-    # Average salary
-    df["salary_num"] = df["salary"].apply(parse_salary_numeric)
-    avg_salary = df["salary_num"].dropna().mean()
+    skills_series = pd.Series([skill for row in df["required_skills"].fillna("").apply(split_skills) for skill in row])
+    top_skills = skills_series.value_counts().head(5)
 
-    # Top skills
-    all_skills = []
-    for entry in df["required_skills"].fillna(""):
-        all_skills.extend(normalize_skill_list(entry))
-    top_skills = pd.Series([s for s in all_skills if s]).value_counts().head(5)
+    top_cities = df["location"].fillna("Unknown").value_counts().head(5)
+    top_company = df["company_name"].fillna("Unknown").value_counts().head(1)
 
-    # Top locations for Software Engineer roles
-    se = df[df["job_title"].fillna("").str.contains("software engineer", case=False, na=False)]
-    top_locations_se = se["location"].fillna("Unknown").value_counts().head(3)
+    role_type = df["employment_type"].fillna("Unknown").str.lower()
+    internship_count = role_type.str.contains("intern").sum()
+    fulltime_count = role_type.str.contains("full") | role_type.str.contains("full-time")
+    fulltime_count = fulltime_count.sum()
+    total = len(df)
 
-    out_path = Path("analysis") / "insights.txt"
-    salary_out = f"{avg_salary:.2f}" if not pd.isna(avg_salary) else "N/A"
-    with open(out_path, "w", encoding="utf-8") as f:
-        f.write("Data Science Web Scraping Insights\n")
-        f.write("==============================\n")
-        f.write(f"Total jobs analyzed: {len(df)}\n")
-        f.write(f"Average numeric salary (USD-like normalized): {salary_out}\n")
-        f.write("\nTop 5 demanded skills:\n")
+    out = Path("analysis") / "insights.txt"
+    with open(out, "w", encoding="utf-8") as f:
+        f.write("Job Scraping and Analysis Insights\n")
+        f.write("===============================\n")
+        f.write(f"Total records: {total}\n")
+        f.write("\nTop 5 most demanded skills:\n")
         for skill, count in top_skills.items():
             f.write(f"- {skill}: {count}\n")
-        f.write("\nTop 3 locations for Software Engineer roles:\n")
-        if top_locations_se.empty:
-            f.write("- None found for 'Software Engineer' role titles\n")
-        else:
-            for loc, count in top_locations_se.items():
-                f.write(f"- {loc}: {count}\n")
+        f.write("\nTop locations/cities with most openings:\n")
+        for loc, count in top_cities.items():
+            f.write(f"- {loc}: {count}\n")
+        f.write("\nCompany with most active hiring:\n")
+        if not top_company.empty:
+            c, ccount = top_company.index[0], top_company.iloc[0]
+            f.write(f"- {c}: {ccount}\n")
+        f.write("\nInternship vs Full-time roles:\n")
+        f.write(f"- Internship count: {internship_count}\n")
+        f.write(f"- Full-time count: {fulltime_count}\n")
+        f.write(f"- Internship percentage: {internship_count / total * 100:.2f}%\n")
+        f.write(f"- Full-time percentage: {fulltime_count / total * 100:.2f}%\n")
 
-    print(f"Insights written to {out_path}")
+    print(f"Insights saved to {out}")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

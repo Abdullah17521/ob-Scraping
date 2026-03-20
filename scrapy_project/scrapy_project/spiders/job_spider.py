@@ -25,24 +25,35 @@ def extract_required_skills(description):
         "python",
         "sql",
         "aws",
+        "azure",
+        "gcp",
         "docker",
         "kubernetes",
+        "spark",
         "react",
+        "node",
         "java",
         "c++",
-        "go",
-        "spark",
-        "pytorch",
         "tensorflow",
-        "machine learning",
-        "nosql",
+        "pytorch",
+        "javascript",
+        "typescript",
+        "pandas",
+        "numpy",
     ]
     text = (description or "").lower()
     found = []
     for keyword in keywords:
         if keyword in text:
             found.append("C++" if keyword == "c++" else keyword.title())
-    return " ".join(found) if found else "Not available"
+    if not found:
+        m = re.search(r"skills?[:\s]*([a-zA-Z0-9,\.\s\+\-]+)", description or "", flags=re.I)
+        if m:
+            for token in re.split(r",|;|\\n", m.group(1)):
+                t = token.strip()
+                if t:
+                    found.append(t.title())
+    return ", ".join(dict.fromkeys(found)) if found else "Unknown"
 
 
 def extract_text_from_selectors(response, selectors):
@@ -203,7 +214,7 @@ class JobSpider(scrapy.Spider):
             reader = csv.DictReader(f)
             for row in reader:
                 url = row.get("job_url")
-                if url and "/jobs/listing/" in url:
+                if url and url.startswith("http"):
                     yield scrapy.Request(url=url, callback=self.parse_job)
 
     def parse_job(self, response):
