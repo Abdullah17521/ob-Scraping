@@ -16,14 +16,12 @@ def main():
     dedup = df.drop_duplicates(subset=["job_url"], keep="first")
     print(f"After dedup by job_url: {len(dedup)} rows")
 
-    # filter out broad placeholder pages and unknown skills
+    # filter out jobs with completely empty or "unknown" titles
     mask = (
-        dedup["job_title"].fillna("").str.lower().map(lambda t: "unknown" not in t)
-        & dedup["required_skills"].fillna("").str.lower().map(lambda s: len(s.strip()) > 0)
-        & (dedup["required_skills"].fillna("").str.lower() != "unknown")
+        dedup["job_title"].fillna("").str.lower().map(lambda t: len(t.strip()) > 0 and "unknown" not in t)
     )
     filtered = dedup[mask].copy()
-    print(f"After filtering unknown or empty skills: {len(filtered)} rows")
+    print(f"After filtering empty or unknown job titles: {len(filtered)} rows")
 
     filtered.to_csv(output_path, index=False, encoding="utf-8-sig")
     print(f"Saved filtered jobs to {output_path}")

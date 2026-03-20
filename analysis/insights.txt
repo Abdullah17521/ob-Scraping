@@ -1,26 +1,18 @@
 Job Scraping and Analysis Insights
 ===============================
-Total records: 36
+Total records: 38
 
 Top 5 most demanded skills:
-- Rest Api: 13
-- Scala Api Rest: 5
-- Api Rest: 3
-- Scala Rest Api: 3
-- Api Rest Aws Docker Kubernetes Graphql: 2
+- Unknown: 38
 
 Top locations/cities with most openings:
-- Toronto: 4
-- Seattle or South San Francisco HQ: 3
-- Seattle: 3
-- Remote in United States: 3
-- Dublin HQ: 3
+- Unknown: 38
 
 Company with most active hiring:
-- Stripe: 36
+- Stripe: 21
 
 Internship vs Full-time roles:
-- Internship count: 33
+- Internship count: 0
 - Full-time count: 0
-- Internship percentage: 91.67%
+- Internship percentage: 0.00%
 - Full-time percentage: 0.00%
