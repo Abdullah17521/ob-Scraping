@@ -16,89 +16,154 @@ def normalize_skill(skill):
     
     # Comprehensive skill normalizations - Data Science & ML focused
     normalizations = {
-        # Languages
-        'r': 'R', 'python': 'Python', 'sql': 'SQL',
+        # Languages - Core DS languages
+        'python': 'Python', 'r': 'R', 'sql': 'SQL',
         'java': 'Java', 'scala': 'Scala', 'kotlin': 'Kotlin',
-        'javascript': 'JavaScript', 'typescript': 'TypeScript', 'c++': 'C++',
+        'javascript': 'JavaScript', 'typescript': 'TypeScript',
+        'c++': 'C++', 'go': 'Go', 'rust': 'Rust',
         
-        # ML & AI
+        # ML & Deep Learning
         'machine learning': 'Machine Learning', 'ml': 'Machine Learning',
-        'deep learning': 'Deep Learning', 'ai': 'AI', 'artificial intelligence': 'AI',
-        'nlp': 'NLP', 'natural language processing': 'NLP',
+        'deep learning': 'Deep Learning', 'neural network': 'Neural Networks',
+        'neural networks': 'Neural Networks',
+        'ai': 'AI', 'artificial intelligence': 'AI',
+        'nlp': 'NLP', 'natural language': 'NLP',
         'computer vision': 'Computer Vision', 'cv': 'Computer Vision',
-        'neural networks': 'Neural Networks', 'regression': 'Regression',
-        'classification': 'Classification', 'clustering': 'Clustering',
+        'regression': 'Regression', 'classification': 'Classification',
+        'clustering': 'Clustering', 'reinforcement': 'Reinforcement Learning',
+        'supervised learning': 'Supervised Learning', 'unsupervised learning': 'Unsupervised Learning',
+        'transfer learning': 'Transfer Learning',
         
-        # Data Processing & Engineering
-        'data science': 'Data Science', 'data analysis': 'Data Analysis',
-        'data engineering': 'Data Engineering', 'big data': 'Big Data',
-        'etl': 'ETL', 'data pipeline': 'Data Pipeline',
-        'data warehouse': 'Data Warehouse', 'data mining': 'Data Mining',
+        # Data Roles
+        'data science': 'Data Science', 'data scientist': 'Data Science',
+        'data analysis': 'Data Analysis', 'data analyst': 'Data Analysis',
+        'data engineering': 'Data Engineering', 'data engineer': 'Data Engineering',
+        'big data': 'Big Data', 'data mining': 'Data Mining',
+        'data pipeline': 'Data Pipeline', 'data warehouse': 'Data Warehouse',
+        'database': 'Database', 'etl': 'ETL',
         
         # ML Libraries & Frameworks
-        'tensorflow': 'TensorFlow', 'pytorch': 'PyTorch', 'keras': 'Keras',
-        'scikit-learn': 'Scikit-learn', 'pandas': 'Pandas', 'numpy': 'NumPy',
+        'tensorflow': 'TensorFlow', 'tf': 'TensorFlow',
+        'pytorch': 'PyTorch', 'torch': 'PyTorch',
+        'keras': 'Keras', 'scikit-learn': 'Scikit-learn',
+        'scikit': 'Scikit-learn', 'sklearn': 'Scikit-learn',
+        'pandas': 'Pandas', 'numpy': 'NumPy',
         'matplotlib': 'Matplotlib', 'seaborn': 'Seaborn',
+        'plotly': 'Plotly', 'bokeh': 'Bokeh',
+        'xgboost': 'XGBoost', 'lightgbm': 'LightGBM', 'catboost': 'CatBoost',
+        'spark ml': 'Spark MLlib', 'mllib': 'Spark MLlib',
         
         # Big Data & Distributed Processing
         'apache spark': 'Apache Spark', 'spark': 'Apache Spark',
         'hadoop': 'Hadoop', 'hive': 'Hive', 'presto': 'Presto',
         'kafka': 'Kafka', 'airflow': 'Airflow',
+        'pig': 'Pig', 'oozie': 'Oozie',
         
         # Databases & Data Warehouses
-        'bigquery': 'BigQuery', 'redshift': 'Redshift',
-        'snowflake': 'Snowflake', 'postgres': 'PostgreSQL', 'postgresql': 'PostgreSQL',
-        'mysql': 'MySQL', 'mongodb': 'MongoDB', 'cassandra': 'Cassandra',
+        'bigquery': 'BigQuery', 'bq': 'BigQuery',
+        'redshift': 'Redshift', 'snowflake': 'Snowflake',
+        'postgres': 'PostgreSQL', 'postgresql': 'PostgreSQL',
+        'mysql': 'MySQL', 'mongodb': 'MongoDB',
+        'cassandra': 'Cassandra', 'dynamodb': 'DynamoDB',
+        'elasticsearch': 'Elasticsearch', 'solr': 'Solr',
         
         # Cloud Platforms
-        'aws': 'AWS', 'amazon web services': 'AWS',
+        'aws': 'AWS', 'amazon': 'AWS', 'amazon web': 'AWS',
         'azure': 'Azure', 'microsoft azure': 'Azure',
         'gcp': 'Google Cloud', 'google cloud': 'Google Cloud',
+        'ibm cloud': 'IBM Cloud', 'alibaba': 'Alibaba Cloud',
+        'heroku': 'Heroku', 'digitalocean': 'DigitalOcean',
         
         # DevOps & Infrastructure
-        'docker': 'Docker', 'kubernetes': 'Kubernetes', 'git': 'Git',
-        'linux': 'Linux', 'jenkins': 'Jenkins', 'dbt': 'DBT',
+        'docker': 'Docker', 'kubernetes': 'Kubernetes', 'k8s': 'Kubernetes',
+        'git': 'Git', 'github': 'GitHub', 'gitlab': 'GitLab',
+        'jenkins': 'Jenkins', 'terraform': 'Terraform',
+        'ansible': 'Ansible', 'puppet': 'Puppet',
+        'linux': 'Linux', 'unix': 'Unix', 'bash': 'Bash',
+        'shell': 'Shell', 'dbt': 'DBT',
         
-        # Visualization & BI
-        'tableau': 'Tableau', 'power bi': 'Power BI', 'powerbi': 'Power BI',
-        'looker': 'Looker', 'matplotlib': 'Matplotlib', 'plotly': 'Plotly',
+        # BI & Visualization
+        'tableau': 'Tableau', 'power bi': 'Power BI',
+        'powerbi': 'Power BI', 'looker': 'Looker',
+        'qlik': 'Qlik', 'microstrategy': 'MicroStrategy',
+        'superset': 'Apache Superset', 'grafana': 'Grafana',
         'visualization': 'Data Visualization',
         
         # APIs & Integration
-        'rest api': 'REST API', 'rest': 'REST API', 'api': 'API', 'graphql': 'GraphQL',
+        'rest api': 'REST API', 'rest': 'REST API',
+        'api': 'API', 'graphql': 'GraphQL',
+        'soap': 'SOAP', 'webhook': 'Webhook',
         
         # Statistics & Math
         'statistics': 'Statistics', 'statistical': 'Statistics',
-        'probability': 'Probability', 'statistical analysis': 'Statistics',
+        'probability': 'Probability', 'bayesian': 'Bayesian',
+        'ab testing': 'A/B Testing', 'experimentation': 'Experimentation',
+        'hypothesis': 'Hypothesis Testing',
         
-        # Frameworks & Tools
-        'django': 'Django', 'flask': 'Flask', 'react': 'React',
-        'node.js': 'Node.js', 'node': 'Node.js',
+        # Frameworks & Web
+        'django': 'Django', 'flask': 'Flask', 'fastapi': 'FastAPI',
+        'react': 'React', 'node.js': 'Node.js', 'node': 'Node.js',
+        'express': 'Express', '.net': '.NET',
         
-        # Other
-        'excel': 'Excel', 'vba': 'VBA', 'sas': 'SAS', 'spss': 'SPSS',
-        'analytics': 'Analytics', 'ab testing': 'A/B Testing',
-        'experimentation': 'Experimentation',
+        # Other Tools
+        'excel': 'Excel', 'vba': 'VBA',
+        'sas': 'SAS', 'spss': 'SPSS',
+        'r programming': 'R', 'rstudio': 'RStudio',
+        'jupyter': 'Jupyter', 'colab': 'Google Colab',
+        'anaconda': 'Anaconda', 'docker compose': 'Docker Compose',
+        'analytis': 'Analytics', 'analytics': 'Analytics',
     }
     
-    return normalizations.get(skill, skill.title() if skill else None)
+    return normalizations.get(skill, skill.title() if skill and len(skill) > 1 else None)
 
 
 def split_skills(skills_str):
-    """Split skill string and normalize each skill."""
+    """Parse space-separated skills and reconstruct multi-word phrases."""
     if not skills_str or pd.isna(skills_str):
         return []
     
-    # Split by space AND comma
-    raw_skills = re.split(r'[\s,]+', str(skills_str))
-    normalized = []
+    skills_str = str(skills_str).strip()
+    words = skills_str.split()
     
-    for skill in raw_skills:
-        skill = skill.strip()
-        if skill and len(skill) > 1 and skill.lower() != 'r':  # Skip standalone 'R'
-            norm = normalize_skill(skill)
-            if norm and norm not in normalized:  # Avoid duplicates
+    # Multi-word skill phrases (ordered by length, longest first)
+    multi_word_phrases = [
+        ("Machine", "Learning"), ("Deep", "Learning"), ("Computer", "Vision"),
+        ("Natural", "Language"), ("Neural", "Networks"), ("Data", "Science"),
+        ("Data", "Engineering"), ("Data", "Analysis"), ("Data", "Pipeline"),
+        ("Data", "Warehouse"), ("Data", "Mining"), ("Apache", "Spark"),
+        ("Big", "Data"), ("REST", "API"), ("Google", "Cloud"),
+        ("Microsoft", "Azure"), ("Amazon", "Web"), ("Scikit", "Learn"),
+        ("A/B", "Testing"), ("Transfer", "Learning"), ("Supervised", "Learning"),
+        ("Unsupervised", "Learning"),  ("Reinforcement", "Learning"),
+        ("XG", "Boost"), ("Light", "GBM"), ("Cat", "Boost"),
+        ("Docker", "Compose"), ("IBM", "Cloud"), ("Alibaba", "Cloud"),
+    ]
+    
+    normalized = []
+    i = 0
+    while i < len(words):
+        word = words[i]
+        matched = False
+        
+        # Try to match multi-word phrases
+        if i + 1 < len(words):
+            next_word = words[i + 1]
+            for phrase_parts in multi_word_phrases:
+                if word.lower() == phrase_parts[0].lower() and next_word.lower() == phrase_parts[1].lower():
+                    combined = f"{phrase_parts[0]} {phrase_parts[1]}"
+                    norm = normalize_skill(combined)
+                    if norm and norm not in normalized:
+                        normalized.append(norm)
+                    i += 2
+                    matched = True
+                    break
+        
+        if not matched:
+            # Single-word skill
+            norm = normalize_skill(word)
+            if norm and norm not in normalized and len(word) > 1:
                 normalized.append(norm)
+            i += 1
     
     return normalized
 

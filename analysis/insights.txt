@@ -6,28 +6,28 @@ Dataset Overview:
   • Total Job Records: 24
   • Data Sources: Stripe, RemoteOK, We Work Remotely
   • Platforms: Greenhouse ATS, RemoteOK API, We Work Remotely
-  • Generated: 2026-03-21 01:15:49
+  • Generated: 2026-03-21 01:27:25
   • Data Quality: 100% Complete (All fields populated)
   • Status: OK - Cleaned & Verified
 
 ================================================================================
 TOP 15 MOST DEMANDED SKILLS (Data Science & ML Focus)
 ================================================================================
-   1. API                       | 23 jobs ( 16.2%) ***
-   2. Data                      | 23 jobs ( 16.2%) ***
-   3. Pipeline                  | 23 jobs ( 16.2%) ***
-   4. Scala                     | 13 jobs (  9.2%) *
-   5. REST API                  | 12 jobs (  8.5%) *
-   6. Java                      | 10 jobs (  7.0%) *
-   7. Excel                     |  6 jobs (  4.2%) 
-   8. Git                       |  5 jobs (  3.5%) 
-   9. Python                    |  4 jobs (  2.8%) 
-  10. Kotlin                    |  4 jobs (  2.8%) 
-  11. AWS                       |  4 jobs (  2.8%) 
-  12. Analytics                 |  4 jobs (  2.8%) 
-  13. Machine                   |  4 jobs (  2.8%) 
-  14. Learning                  |  4 jobs (  2.8%) 
-  15. Warehouse                 |  3 jobs (  2.1%) 
+   1. API                       | 23 jobs ( 19.3%) ***
+   2. Data Pipeline             | 23 jobs ( 19.3%) ***
+   3. Scala                     | 13 jobs ( 10.9%) **
+   4. REST API                  | 12 jobs ( 10.1%) **
+   5. Java                      | 10 jobs (  8.4%) *
+   6. Excel                     |  6 jobs (  5.0%) *
+   7. Git                       |  5 jobs (  4.2%) 
+   8. Python                    |  4 jobs (  3.4%) 
+   9. Kotlin                    |  4 jobs (  3.4%) 
+  10. AWS                       |  4 jobs (  3.4%) 
+  11. Analytics                 |  4 jobs (  3.4%) 
+  12. Machine Learning          |  4 jobs (  3.4%) 
+  13. Data Warehouse            |  3 jobs (  2.5%) 
+  14. Docker                    |  2 jobs (  1.7%) 
+  15. Kubernetes                |  2 jobs (  1.7%) 
 
 ================================================================================
 TOP 10 JOB LOCATIONS WITH MOST OPENINGS
