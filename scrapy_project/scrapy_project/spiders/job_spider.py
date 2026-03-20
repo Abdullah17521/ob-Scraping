@@ -224,9 +224,6 @@ class JobSpider(scrapy.Spider):
 
         raw_title = response.xpath("//title/text()").get() or ""
         item["job_title"] = clean_text(raw_title.replace("| Stripe", "").strip()) or "Unknown"
-        if not is_technical_role(item["job_title"]) and not is_technical_url(response.url):
-            self.logger.debug("Skipping non-technical role: %s", item["job_title"])
-            return
 
         location = clean_text(extract_location_from_details(response))
         if not location:

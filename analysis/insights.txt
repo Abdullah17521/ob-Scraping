@@ -1,9 +1,23 @@
-Data Science Web Scraping Insights
-==============================
-Total jobs analyzed: 328
-Average numeric salary (USD-like normalized): 577954.11
+Job Scraping and Analysis Insights
+===============================
+Total records: 73
 
-Top 5 demanded skills:
+Top 5 most demanded skills:
+- Unknown: 72
+- required_skills: 1
 
-Top 3 locations for Software Engineer roles:
-- None found for 'Software Engineer' role titles
+Top locations/cities with most openings:
+- Dublin HQ: 11
+- Toronto: 7
+- South San Francisco HQ: 6
+- Bengaluru: 4
+- Seattle: 4
+
+Company with most active hiring:
+- Stripe: 72
+
+Internship vs Full-time roles:
+- Internship count: 64
+- Full-time count: 1
+- Internship percentage: 87.67%
+- Full-time percentage: 1.37%
